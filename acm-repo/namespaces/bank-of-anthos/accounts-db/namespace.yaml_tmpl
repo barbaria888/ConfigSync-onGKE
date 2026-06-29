@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: accounts-db
+  labels:
+    istio.io/rev: ${ASM_LABEL}

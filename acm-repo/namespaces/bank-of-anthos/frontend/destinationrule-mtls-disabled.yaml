@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: destrule-mtls-disable
+  namespace: frontend
+spec:
+  host: frontend
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_CONN
+    tls:
+      mode: DISABLE
