@@ -12,6 +12,57 @@ Config Sync is a GitOps-centric service designed to continuously reconcile the s
   <img src="images/topology-of-service-mes.png" alt="GKE Multi-Cluster Architecture Topology" width="800">
 </p>
 
+### GitOps & Service Mesh Topography
+
+```mermaid
+graph TD
+    subgraph Git ["Source of Truth (Git Repository)"]
+        repo["acm-repo (Cloud Source Repositories)"]
+    end
+
+    subgraph Cluster1 ["GKE Cluster 1 (gke-cluster-1)"]
+        cs1["Config Sync (Root Sync)"]
+        asm1["Anthos Service Mesh (ASM)"]
+        ig1["ASM Ingress Gateway"]
+        subgraph App1 ["Microservices (Bank of Anthos)"]
+            fe1["Frontend"]
+            br1["Balance Reader"]
+            ct1["Contacts"]
+            lw1["Ledger Writer"]
+        end
+    end
+
+    subgraph Cluster2 ["GKE Cluster 2 (gke-cluster-2)"]
+        cs2["Config Sync (Root Sync)"]
+        asm2["Anthos Service Mesh (ASM)"]
+        ig2["ASM Ingress Gateway"]
+        subgraph App2 ["Microservices (Bank of Anthos)"]
+            fe2["Frontend"]
+            br2["Balance Reader"]
+            ct2["Contacts"]
+            lw2["Ledger Writer"]
+        end
+    end
+
+    repo -->|"Pulls manifests (Workload Identity)"| cs1
+    repo -->|"Pulls manifests (Workload Identity)"| cs2
+
+    cs1 -->|"Reconciles State"| App1
+    cs2 -->|"Reconciles State"| App2
+
+    ig1 -->|"Ingress Traffic"| fe1
+    ig2 -->|"Ingress Traffic"| fe2
+
+    asm1 <==>|"Cross-Cluster Service Discovery"| asm2
+    
+    style Git fill:#f8f9fa,stroke:#4285F4,stroke-width:2px;
+    style Cluster1 fill:#f8f9fa,stroke:#34A853,stroke-width:2px;
+    style Cluster2 fill:#f8f9fa,stroke:#EA4335,stroke-width:2px;
+    style repo fill:#E8F0FE,stroke:#4285F4,stroke-width:1px;
+    style cs1 fill:#E6F4EA,stroke:#34A853,stroke-width:1px;
+    style cs2 fill:#FCE8E6,stroke:#EA4335,stroke-width:1px;
+```
+
 ### Objective
 By the end of this deployment, you will have:
 1. Provisioned dual GKE Standard clusters.
