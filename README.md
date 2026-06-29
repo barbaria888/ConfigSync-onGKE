@@ -8,9 +8,6 @@ Welcome to the **Automate GKE Configurations with Config Sync** lab guide. This 
 
 Config Sync is a GitOps-centric service designed to continuously reconcile the state of your Google Kubernetes Engine (GKE) clusters with declarative configurations stored in a Git repository. This paradigm ensures that your Kubernetes infrastructure is robust, auditable, and immutable.
 
-<p align="center">
-  <img src="images/topology-of-service-mes.png" alt="GKE Multi-Cluster Architecture Topology" width="800">
-</p>
 
 ### GitOps & Service Mesh Topography
 ![ARCHITECTURE](/images/ARchitecture.png)
@@ -63,9 +60,17 @@ graph TD
     style cs1 fill:#E6F4EA,stroke:#34A853,stroke-width:1px;
     style cs2 fill:#FCE8E6,stroke:#EA4335,stroke-width:1px;
 ```
+<p align="center">
+  <img src="images/topology-of-service-mes.png" alt="GKE Multi-Cluster Architecture Topology" width="800">
+</p>
+
+## Config Sync Internal Architecture
+<img src="https://docs.cloud.google.com/static/kubernetes-engine/config-sync/docs/img/config_sync_arch_1.20.svg">
+
+---
 
 ### Objective
-By the end of this deployment, you will have:
+By the end of this deployment, we will have:
 1. Provisioned dual GKE Standard clusters.
 2. Enabled and configured Anthos Service Mesh.
 3. Installed and configured Config Sync to deploy microservices from a centralized Git repository.
