@@ -1,4 +1,4 @@
-# 📘 Automate GKE Configurations with Config Sync
+# <img src="https://github.com/barbaria888/ConfigSync-onGKE/blob/main/images/Anthos-512-color.png" height="70" >  <img src="https://github.com/barbaria888/ConfigSync-onGKE/blob/main/images/Anthos%20Service%20Mesh.png" height="70">Automate GKE Configurations with Config Sync
 
 Welcome to the **Automate GKE Configurations with Config Sync** lab guide. This repository contains the step-by-step execution pipeline to provision a multi-cluster GKE environment, integrate Anthos Service Mesh (ASM), and leverage Config Sync for GitOps-driven cluster configuration management.
 
