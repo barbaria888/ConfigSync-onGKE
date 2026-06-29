@@ -13,6 +13,7 @@ Config Sync is a GitOps-centric service designed to continuously reconcile the s
 </p>
 
 ### GitOps & Service Mesh Topography
+![ARCHITECTURE](/images/ARchitecture.png)
 
 ```mermaid
 graph TD
